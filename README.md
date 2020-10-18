@@ -1,6 +1,6 @@
 # AutoBot_OpenSource
 
-<img src="./Img/AutobotLogo_Removebg.png" width = 300>
+<img src="./img/AutobotLogo_Removebg.png" width = 300>
 
 ## 포스팅 주소
 
@@ -14,7 +14,7 @@
 
 ## 프로젝트 사용시 주의 사항
 
-<img src="./Img/1.png" width = 700>
+<img src="./img/1.png" width = 700>
 
 - `Global 폴더 > GlobalApiEndPoint.cs 부분 API KEY입력을 수정`해 사용해야 됩니다.
 - 각 `KAKAO_KEY_SEND~~~` 부분은 대응되는 메시지 템플릿 키를 입력하면 됩니다.
