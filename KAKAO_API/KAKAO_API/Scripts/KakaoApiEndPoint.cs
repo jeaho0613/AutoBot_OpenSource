@@ -1,8 +1,8 @@
 ﻿class KakaoApiEndPoint
 {
     // API 키
-    public const string KakaoRestApiKey = "7d023da45638be97317017c745350cb8";
-    public const string KakaoSendMessageKey = "38807";
+    public const string KakaoRestApiKey = "여러분의 API 키";
+    public const string KakaoSendMessageKey = "여러분의 메시지 탬플릿 키";
 
     // 리다이렉트 url
     public const string KakaoRedirectUrl = "https://www.naver.com/oauth";
