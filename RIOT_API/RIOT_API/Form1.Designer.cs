@@ -51,7 +51,6 @@
             this.Btn_Using.TabIndex = 1;
             this.Btn_Using.Text = "시작";
             this.Btn_Using.UseVisualStyleBackColor = true;
-            this.Btn_Using.Click += new System.EventHandler(this.Btn_Using_Click);
             // 
             // TextBox_OutPut
             // 
@@ -77,7 +76,6 @@
             this.Btn_ClientInit.TabIndex = 4;
             this.Btn_ClientInit.Text = "클라리언트";
             this.Btn_ClientInit.UseVisualStyleBackColor = true;
-            this.Btn_ClientInit.Click += new System.EventHandler(this.Btn_ClientInit_Click);
             // 
             // Btn_RunePage
             // 
@@ -87,7 +85,6 @@
             this.Btn_RunePage.TabIndex = 5;
             this.Btn_RunePage.Text = "룬 페이지";
             this.Btn_RunePage.UseVisualStyleBackColor = true;
-            this.Btn_RunePage.Click += new System.EventHandler(this.Btn_RunePage_Click);
             // 
             // Form1
             // 

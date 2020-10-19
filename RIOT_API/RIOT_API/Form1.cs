@@ -1,15 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
-using RIOT_API.Scripts;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RIOT_API
@@ -23,19 +15,28 @@ namespace RIOT_API
             InitializeComponent();
 
             clientManager = new RiotClientManager();
+
+            this.Btn_Using.Click += new System.EventHandler(this.Btn_Using_Click);
+            this.Btn_RunePage.Click += new System.EventHandler(this.Btn_RunePage_Click);
+            this.Btn_ClientInit.Click += new System.EventHandler(this.Btn_ClientInit_Click);
+
+            clientManager.LeagueClosed += () =>
+            {
+                Console.WriteLine("클라이언트 종료");
+            };
         }
 
         // 기본 Http 메시지
         private async void Btn_Using_Click(object sender, EventArgs e)
         {
             // HttpMessage로 받기
-            var message = await clientManager.UsingApiEventHttpMessage(TextBox_Method.Text, TextBox_Url.Text);
-            var sMessage = message.Content.ReadAsStringAsync().Result;
-            TextBox_OutPut.Text = sMessage;
+            //var message = await clientManager.UsingApiEventHttpMessage(TextBox_Method.Text, TextBox_Url.Text);
+            //var sMessage = message.Content.ReadAsStringAsync().Result;
+            //TextBox_OutPut.Text = sMessage;
 
             // JObject로 받기
-            //var message = await clientManager.UsingApiEventJObject(TextBox_Method.Text, TextBox_Url.Text);
-            //TextBox_OutPut.Text = message.ToString();
+            var message = await clientManager.UsingApiEventJObject(TextBox_Method.Text, TextBox_Url.Text);
+            TextBox_OutPut.Text = message.ToString();
         }
 
         // 룬페이지 설정
