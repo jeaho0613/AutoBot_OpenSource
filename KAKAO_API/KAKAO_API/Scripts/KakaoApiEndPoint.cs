@@ -20,5 +20,4 @@
     public const string KakaoTemplateMessageUrl = "/v2/api/talk/memo/send"; // Template 메시지
     public const string KakaoDefaultMessageUrl = "/v2/api/talk/memo/default/send"; // Default 메시지
     public const string KakaoUserDataUrl = "/v2/user/me"; // 사용자 데이터
-
 }

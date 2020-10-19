@@ -16,7 +16,7 @@ namespace KAKAO_API
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KakaoMain());
+            Application.Run(new Form1());
         }
     }
 }

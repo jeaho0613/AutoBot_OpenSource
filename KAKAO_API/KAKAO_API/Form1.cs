@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using KAKAO_API.Scripts;
 using Microsoft.Win32;
 using Newtonsoft.Json.Linq; // dll 추가
 
 namespace KAKAO_API
 {
-    public partial class KakaoMain : Form
+    public partial class Form1 : Form
     {
         private KakaoLoginPage kakaoLoginPage;
         private KakaoManager kakaoManager;
 
-        public KakaoMain()
+        public Form1()
         {
             InitializeComponent();
 
@@ -33,6 +32,59 @@ namespace KAKAO_API
         {
             Console.WriteLine("폼 로드");
 
+            //WebBrowserVersionSetting();
+        }
+
+        private void Btn_Login_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("로그인 버튼");
+            kakaoLoginPage = new KakaoLoginPage();
+            kakaoLoginPage.ShowDialog();
+        }
+
+        private void Btn_Logout_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("로그아웃 버튼");
+            kakaoManager.KakaoTalkLogOut();
+        }
+
+        private void Btn_TemplateSendMessage_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("템플릿 메시지 보내기 버튼");
+            kakaoManager.KakaoTemplateSendMessage(KakaoApiEndPoint.KakaoSendMessageKey);
+        }
+
+        private void Btn_DefaultSendMessage_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("커스텀 메시지 보내기 버튼");
+
+            JObject SendJson = new JObject();
+            JObject LinkJson = new JObject();
+
+            LinkJson.Add("web_url", "https://developers.kakao.com");
+            LinkJson.Add("mobile_web_url", "https://developers.kakao.com");
+
+            SendJson.Add("object_type", "text");
+            SendJson.Add("text", "커스텀 메시지 입니다.\n\n https://jaeho0613.tistory.com/ \n\n");
+            SendJson.Add("link", LinkJson);
+            SendJson.Add("button_title", "안녕");
+
+            Console.WriteLine(SendJson);
+
+            kakaoManager.KakaoDefaultSendMessage(SendJson);
+        }
+
+        private void Btn_UserData_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("유저 데이터");
+            kakaoManager.KakaoUserData();
+
+            Ptb_UserImg.Image = KakaoData.UserImg;
+            Label_UserName.Text = KakaoData.UserNickName;
+        }
+
+        private void WebBrowserVersionSetting()
+        {
             RegistryKey registryKey = null; // 레지스트리 변경에 사용 될 변수
 
             int browserver = 0;
@@ -109,54 +161,6 @@ namespace KAKAO_API
                     registryKey.Close();
                 }
             }
-        }
-
-        private void Btn_Login_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("로그인 버튼");
-            kakaoLoginPage = new KakaoLoginPage();
-            kakaoLoginPage.ShowDialog();
-        }
-
-        private void Btn_Logout_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("로그아웃 버튼");
-            kakaoManager.KakaoTalkLogOut();
-        }
-
-        private void Btn_TemplateSendMessage_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("템플릿 메시지 보내기 버튼");
-            kakaoManager.KakaoTemplateSendMessage(KakaoApiEndPoint.KakaoSendMessageKey);
-        }
-
-        private void Btn_DefaultSendMessage_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("커스텀 메시지 보내기 버튼");
-
-            JObject SendJson = new JObject();
-            JObject LinkJson = new JObject();
-
-            LinkJson.Add("web_url", "https://developers.kakao.com");
-            LinkJson.Add("mobile_web_url", "https://developers.kakao.com");
-
-            SendJson.Add("object_type", "text");
-            SendJson.Add("text", "커스텀 메시지 입니다.\n\n https://jaeho0613.tistory.com/ \n\n");
-            SendJson.Add("link", LinkJson);
-            SendJson.Add("button_title", "안녕");
-
-            Console.WriteLine(SendJson);
-
-            kakaoManager.KakaoDefaultSendMessage(SendJson);
-        }
-
-        private void Btn_UserData_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("유저 데이터");
-            kakaoManager.KakaoUserData();
-
-            Ptb_UserImg.Image = KakaoData.UserImg;
-            Label_UserName.Text = KakaoData.UserNickName;
         }
     }
 }

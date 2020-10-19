@@ -1,6 +1,6 @@
 ﻿namespace KAKAO_API
 {
-    partial class KakaoMain
+    partial class Form1
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
